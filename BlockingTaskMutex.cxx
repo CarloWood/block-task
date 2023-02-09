@@ -6,6 +6,8 @@ namespace task {
 BlockingTaskMutex::~BlockingTaskMutex()
 {
   DoutEntering(dc::statefultask, "BlockingTaskMutex::~BlockingTaskMutex() [" << this << "]");
+  if (m_task_mutex)
+    unlock();
 }
 
 char const* BlockingTaskMutex::state_str_impl(state_type run_state) const
